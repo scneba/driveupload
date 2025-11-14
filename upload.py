@@ -4,8 +4,10 @@ from googleapiclient.http import MediaFileUpload
 import os
 
 TOKEN_FILE = 'token.json'
+#TODO update file to upload and the folder id
 FILE_TO_UPLOAD = 'example.zip' #can be path to file
-FOLDER_ID = '1P_FXOvPvdSAn4_Ho7QPxxxxxxxxxxf' # get folder id google folder url
+REMOTE_FILE_NAME='example.zip' #how to name file on google drive
+FOLDER_ID = '1P_FXOvPvdSAn4_Ho7Qxxxxx' # Gotten from Google drive url of folder
 
 # Load credentials
 creds = Credentials.from_authorized_user_file(TOKEN_FILE)
@@ -15,7 +17,7 @@ service = build('drive', 'v3', credentials=creds)
 
 # File metadata
 file_metadata = {
-    'name': FILE_TO_UPLOAD,
+    'name': REMOTE_FILE_NAME,
     'parents': [FOLDER_ID]
 }
 
